@@ -103,7 +103,7 @@
       <file leaf-file-name="Tracker.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Tracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="4" selection-start="64" selection-end="64" vertical-scroll-proportion="0.060544904" vertical-offset="0" max-vertical-offset="991">
+            <state line="27" column="5" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4086781" vertical-offset="0" max-vertical-offset="991">
               <folding />
             </state>
           </provider>
@@ -574,15 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/KvpDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
@@ -597,9 +588,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Tracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="64" selection-end="64" vertical-scroll-proportion="0.060544904" vertical-offset="0" max-vertical-offset="991">
+        <state line="27" column="5" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4086781" vertical-offset="0" max-vertical-offset="991">
           <folding />
         </state>
       </provider>
