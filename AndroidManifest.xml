@@ -20,5 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <provider
+                android:authorities="com.kleetus.trackanything.contentprovider"
+                android:name=".MainContentProvider"
+                android:exported="false"/>
     </application>
 </manifest>
