@@ -1,14 +1,31 @@
 package com.kleetus.trackanything;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
 public class MainContentProvider extends ContentProvider {
+    TrackerSQLHelper db;
+
+    private static final String AUTHORITY = "com.kleetus.trackanything.MainContentProvider";
+    private static final String TRACKER_BASE_PATH = "trackers";
+
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+    public static final String CONTENT_TYPE_ITEM = ContentResolver.CURSOR_ITEM_BASE_TYPE;
+    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE;
+
+    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    static {
+        //uriMatcher.addURI();
+    }
+
     @Override
     public boolean onCreate() {
-        return false;
+        db = new TrackerSQLHelper(getContext());
+        return true;
     }
 
     @Override

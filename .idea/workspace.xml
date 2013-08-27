@@ -80,49 +80,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TrackerFile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerFile.java">
+      <file leaf-file-name="MainContentProvider.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/MainContentProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrackerSQLHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+            <state line="21" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="0.31786075" vertical-offset="0" max-vertical-offset="991">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tracker.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Tracker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="5" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4086781" vertical-offset="0" max-vertical-offset="991">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KvpDefinition.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/KvpDefinition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RawDataForDb.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/RawDataForDb.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -145,13 +109,14 @@
         <option value="$PROJECT_DIR$/res/layout/main_list.xml" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/MainListFragment.java" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/CursorLoader.java" />
-        <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/MainContentProvider.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerFile.java" />
-        <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/KvpDefinition.java" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/RawDataForDb.java" />
         <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/Tracker.java" />
+        <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/Constants.java" />
+        <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/kleetus/trackanything/MainContentProvider.java" />
       </list>
     </option>
   </component>
@@ -476,13 +441,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-18/com/android/tools/layoutlib/create/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="3" selection-end="3" vertical-scroll-proportion="0.025641026" vertical-offset="0" max-vertical-offset="3210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/main_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="20" selection-start="502" selection-end="502" vertical-scroll-proportion="0.35897437" vertical-offset="0" max-vertical-offset="585">
@@ -506,38 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="41" selection-start="133" selection-end="133" vertical-scroll-proportion="0.060544904" vertical-offset="0" max-vertical-offset="991">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/CursorLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.030272452" vertical-offset="0" max-vertical-offset="991">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/MainContentProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="5" selection-start="461" selection-end="461" vertical-scroll-proportion="0.24217962" vertical-offset="0" max-vertical-offset="991">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/MainListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="680" selection-end="680" vertical-scroll-proportion="0.2875883" vertical-offset="0" max-vertical-offset="991">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main_list.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -545,15 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="15" selection-start="430" selection-end="430" vertical-scroll-proportion="0.17116183" vertical-offset="0" max-vertical-offset="964">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackAnything.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.18163471" vertical-offset="0" max-vertical-offset="991">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -567,30 +484,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerFile.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/CursorLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+        <state line="3" column="13" selection-start="50" selection-end="50" vertical-scroll-proportion="0.045408677" vertical-offset="0" max-vertical-offset="991">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/KvpDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+        <state line="3" column="13" selection-start="50" selection-end="50" vertical-scroll-proportion="0.045408677" vertical-offset="0" max-vertical-offset="991">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="41" selection-start="133" selection-end="133" vertical-scroll-proportion="0.060544904" vertical-offset="0" max-vertical-offset="991">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/MainListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="680" selection-end="680" vertical-scroll-proportion="0.2875883" vertical-offset="0" max-vertical-offset="991">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/RawDataForDb.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+        <state line="3" column="13" selection-start="50" selection-end="50" vertical-scroll-proportion="0.045408677" vertical-offset="0" max-vertical-offset="991">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackAnything.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+        <state line="12" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.18163471" vertical-offset="0" max-vertical-offset="991">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -599,8 +532,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Tracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="5" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4086781" vertical-offset="0" max-vertical-offset="991">
+        <state line="21" column="21" selection-start="328" selection-end="328" vertical-scroll-proportion="0.31786075" vertical-offset="0" max-vertical-offset="991">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerSQLHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="62" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.3642785" vertical-offset="194" max-vertical-offset="1440">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="53" selection-start="865" selection-end="865" vertical-scroll-proportion="0.3027245" vertical-offset="0" max-vertical-offset="991">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/TrackerFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="50" selection-end="50" vertical-scroll-proportion="0.045408677" vertical-offset="0" max-vertical-offset="991">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kleetus/trackanything/MainContentProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="0.31786075" vertical-offset="0" max-vertical-offset="991">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
