@@ -12,7 +12,7 @@ public class MainListFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String[] test = {"t", "e", "s", "t"};
+        String[] projection = {Constants.}
         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, test);
         setListAdapter(adapter);
         return inflater.inflate(R.layout.main_list, container, false);
