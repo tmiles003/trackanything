@@ -44,7 +44,7 @@ public class MainContentProvider extends ContentProvider {
         }
         Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
-        return cursor;
+           return cursor;
     }
 
     @Override
