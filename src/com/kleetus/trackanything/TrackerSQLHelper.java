@@ -30,7 +30,7 @@ public class TrackerSQLHelper extends SQLiteOpenHelper {
                 Constants.COL_KVP_DEF_ID +
                 " integer not null, " +
                 Constants.COL_KVP_DATA +
-                " blob not null" +
+                " blob not null, " +
                 Constants.COL_DATE_CREATED +
                 " integer not null);");
     }
@@ -44,11 +44,11 @@ public class TrackerSQLHelper extends SQLiteOpenHelper {
                 Constants.COL_TRACKER_ID +
                 " integer not null, " +
                 Constants.COL_KVP_COLOR +
-                " text not null" +
+                " text not null, " +
                 Constants.COL_KVP_KEY +
-                " text not null" +
+                " text not null, " +
                 Constants.COL_KVP_VALUE_TYPE +
-                " text not null" +
+                " text not null, " +
                 Constants.COL_DATE_CREATED +
                 " integer not null);");
     }
