@@ -36,7 +36,7 @@ public class MainContentProvider extends ContentProvider {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(Constants.TABLE_TRACKER);
         int uriType = uriMatcher.match(uri);
-        switch(uriType) {
+        switch (uriType) {
             case TRACKERS:
                 break;
             default:
@@ -44,7 +44,7 @@ public class MainContentProvider extends ContentProvider {
         }
         Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
-           return cursor;
+        return cursor;
     }
 
     @Override

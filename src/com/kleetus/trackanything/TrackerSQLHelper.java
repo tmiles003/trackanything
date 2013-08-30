@@ -13,6 +13,12 @@ public class TrackerSQLHelper extends SQLiteOpenHelper {
     }
 
     @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        
+    }
+
+    @Override
     public void onCreate(SQLiteDatabase db) {
 
         createTableTrackers(db);
