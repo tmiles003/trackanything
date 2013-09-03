@@ -1,7 +1,10 @@
 package com.kleetus.trackanything;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
@@ -12,6 +15,8 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 public class MainListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -20,16 +25,70 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
     int[] uiBindTo = {android.R.id.text1};
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceStatew) {
 
-        getLoaderManager().initLoader(0, null, this);
+        getLoaderManager().initLoader(Constants.MAIN_LOADER, null, this);
 
         return inflater.inflate(R.layout.main_list, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ListView lv = getListView();
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                confirmDeleteTracker(i);
+
+                return false;
+            }
+        });
+
+    }
+
+    private void confirmDeleteTracker(final int id) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Delete Tracker ")
+                .setMessage("Are you sure you would like to delete this tracker")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deleteTracker(id);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null).show();
+    }
+
+    private void deleteTracker(int id) {
+
+        Bundle b = new Bundle();
+        b.putString(Constants.METHOD, Constants.DELETE);
+        b.putInt(Constants.ID, id);
+
+        getLoaderManager().restartLoader(Constants.MAIN_LOADER, b, this);
+
     }
 
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+
+        if(null != bundle) {
+            if(bundle.getString(Constants.METHOD).equals(Constants.DELETE)) {
+                return new CursorLoader(
+                        getActivity(),
+                        Uri.parse(MainContentProvider.DELETE_TRACKER_STRING + bundle.getInt(Constants.ID)),
+                        null,
+                        null,
+                        null,
+                        null);
+            }
+        }
 
         return new CursorLoader(
                 getActivity(),
@@ -45,7 +104,8 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
 
         CursorAdapter adapter = new SimpleCursorAdapter(getActivity()
                 .getApplicationContext(), android.R.layout.simple_list_item_1, cursor,
-                uiBindFrom, uiBindTo);
+                uiBindFrom, uiBindTo, 0);
+
 
         setListAdapter(adapter);
 
@@ -53,7 +113,17 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    }
+
+    @Override
+    public void onListItemClick(ListView i, View v, int position, long id) {
+
+        //load a new fragment??
+
+        // getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, this);
 
     }
+
+
 }
 

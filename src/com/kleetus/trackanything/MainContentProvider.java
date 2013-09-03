@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
+import java.io.IOException;
+
 public class MainContentProvider extends ContentProvider {
     TrackerSQLHelper db;
 
@@ -16,6 +18,9 @@ public class MainContentProvider extends ContentProvider {
 
     public static final int TRACKERS = 100;
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+
+    public static final String DELETE_TRACKER_STRING = "content://" + AUTHORITY + "/" + TRACKER_BASE_PATH + "/";
+
     public static final String CONTENT_TYPE_ITEM = ContentResolver.CURSOR_ITEM_BASE_TYPE;
     public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE;
 
@@ -33,17 +38,23 @@ public class MainContentProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+
         queryBuilder.setTables(Constants.TABLE_TRACKER);
         int uriType = uriMatcher.match(uri);
+
         switch (uriType) {
             case TRACKERS:
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI");
         }
+
         Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder);
+
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
+
         return cursor;
     }
 

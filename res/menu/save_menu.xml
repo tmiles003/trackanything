@@ -4,11 +4,9 @@
     xmlns:trackanything="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/add_menu"
-        android:icon="@android:drawable/ic_menu_add"
-        android:title="Add"
+        android:id="@+id/save_menu"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Save"
         trackanything:showAsAction="ifRoom|withText" />
-
-
 
 </menu>

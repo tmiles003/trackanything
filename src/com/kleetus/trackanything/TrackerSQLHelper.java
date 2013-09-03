@@ -6,16 +6,26 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class TrackerSQLHelper extends SQLiteOpenHelper {
+    Context ctx;
 
     public TrackerSQLHelper(Context context) {
+
         super(context, Constants.DBNAME, null, Constants.VERSION);
+
+        this.ctx = context;
+
     }
 
     @Override
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
-        
+
     }
 
     @Override
@@ -24,7 +34,6 @@ public class TrackerSQLHelper extends SQLiteOpenHelper {
         createTableTrackers(db);
         createTableKvpDefs(db);
         createTableKvpData(db);
-
     }
 
     private void createTableKvpData(SQLiteDatabase db) {

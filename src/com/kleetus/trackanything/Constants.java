@@ -19,5 +19,10 @@ public class Constants {
     public static final String COL_KVP_COLOR = "color";
     public static final String COL_KVP_DEF_ID = "kvp_def_id";
     public static final String COL_KVP_DATA = "data";
+    public static final int MAIN_LOADER = 0;
 
+    public static final String METHOD = "method";
+    public static final String ID = "id";
+
+    public static final String DELETE = "delete";
 }
