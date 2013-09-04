@@ -43,15 +43,16 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                confirmDeleteTracker(l, adapterView);
+                confirmDeleteTracker(l);
 
-                return false;
+                return true;
             }
         });
 
     }
 
-    private void confirmDeleteTracker(final long id, final AdapterView adapterView) {
+    private void confirmDeleteTracker(final long id) {
+
         new AlertDialog.Builder(getActivity())
                 .setTitle("Delete Tracker ")
                 .setMessage("Are you sure you would like to delete this tracker")
@@ -59,21 +60,27 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        deleteTracker(id, adapterView);
+
+                        int count = deleteTracker(id);
+
+                        if (count > 0) {
+                            getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, MainListFragment.this);
+                        }
+
                     }
                 })
                 .setNegativeButton(android.R.string.no, null).show();
     }
 
-    private void deleteTracker(long id, AdapterView<?> adapterView) {
-        getActivity().getContentResolver().delete(
+    private int deleteTracker(long id) {
+        int count = getActivity().getContentResolver().delete(
                 MainContentProvider.DELETE_TRACKER_URI,
                 "_id=" + Long.toString(id),
                 null
         );
+        return count;
+    }
 
-        CursorAdapter adapter = (CursorAdapter)adapterView.getAdapter();
-        
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
