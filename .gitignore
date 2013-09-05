@@ -2,6 +2,7 @@
 *.apk
 *.ap_
 *.swp
+.idea/inspectionProfiles/*
 # files for the dex VM
 *.dex
 

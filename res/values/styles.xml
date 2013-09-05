@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TrackAnythingTheme" parent="@style/Theme.AppCompat">
+        <item name="android:actionBarItemBackground">#FFF</item>
+    </style>
+</resources>

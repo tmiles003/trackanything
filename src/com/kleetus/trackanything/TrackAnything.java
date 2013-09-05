@@ -1,8 +1,6 @@
 package com.kleetus.trackanything;
 
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,15 +35,8 @@ public class TrackAnything extends ActionBarActivity {
     }
 
 
-    private void saveTracker() {
+    private void saveTracker() {    }
 
-
-    }
-
-    private void addTracker() {
-
-
-
-    }
+    private void addTracker() {    }
 
 }

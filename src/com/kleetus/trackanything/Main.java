@@ -22,7 +22,7 @@ public class Main extends TrackAnything {
 
         Fragment addFragment = new AddFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.main, addFragment).commit();
+        ft.add(R.id.content_frame, addFragment).commit();
 
     }
 
@@ -30,7 +30,7 @@ public class Main extends TrackAnything {
 
         Fragment trackerFragment = new MainListFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.main, trackerFragment).commit();
+        ft.add(R.id.list_frame, trackerFragment).commit();
 
     }
 
