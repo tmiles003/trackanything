@@ -6,16 +6,18 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class Main extends TrackAnything {
+public class Main extends ActionBarActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     CharSequence drawerTitle;
     CharSequence title;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,15 +33,15 @@ public class Main extends TrackAnything {
 
             public void onDrawerClosed(View view) {
 
-                getActionBar().setTitle(title);
-                invalidateOptionsMenu();
+                getSupportActionBar().setTitle(title);
+                supportInvalidateOptionsMenu();
 
             }
 
             public void onDrawerOpened(View view) {
 
-                getActionBar().setTitle(drawerTitle);
-                invalidateOptionsMenu();
+                getSupportActionBar().setTitle(drawerTitle);
+                supportInvalidateOptionsMenu();
 
             }
 
@@ -47,8 +49,8 @@ public class Main extends TrackAnything {
 
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         load_tracker_fragment();
 
@@ -58,9 +60,9 @@ public class Main extends TrackAnything {
 
     private void load_body_fragment() {
 
-        Fragment addFragment = new AddFragment();
+        Fragment dashboardFragment = new DashboardFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.content_frame, addFragment).commit();
+        ft.add(R.id.content_frame, dashboardFragment).commit();
 
     }
 
@@ -82,17 +84,53 @@ public class Main extends TrackAnything {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+
         super.onConfigurationChanged(newConfig);
         actionBarDrawerToggle.onConfigurationChanged(newConfig);
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case R.id.add_menu:
+                addTracker();
+                return true;
+            case R.id.save_menu:
+                saveTracker();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void saveTracker() {    }
+
+    private void addTracker() {
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment addFragment = new AddFragment();
+        ft.replace(R.id.content_frame, addFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+
     }
 
 
