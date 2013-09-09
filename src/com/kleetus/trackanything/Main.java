@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ public class Main extends ActionBarActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     CharSequence drawerTitle;
     CharSequence title;
+    ActionMode actionMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,13 +54,13 @@ public class Main extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        load_tracker_fragment();
+        loadTracker();
 
-        load_body_fragment();
+        loadDashboard();
 
     }
 
-    private void load_body_fragment() {
+    private void loadDashboard() {
 
         Fragment dashboardFragment = new DashboardFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -66,7 +68,7 @@ public class Main extends ActionBarActivity {
 
     }
 
-    private void load_tracker_fragment() {
+    private void loadTracker() {
 
         Fragment trackerFragment = new MainListFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -125,14 +127,55 @@ public class Main extends ActionBarActivity {
 
     private void addTracker() {
 
+        ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                MenuInflater inflater = actionMode.getMenuInflater();
+                inflater.inflate(R.menu.add_menu, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+                switch(menuItem.getItemId()) {
+                    case R.id.save_menu:
+                        saveTracker();
+                        actionMode.finish();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                mode = null;
+            }
+        };
+
+        actionMode = startSupportActionMode(actionModeCallback);
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment addFragment = new AddFragment();
+        AddFragment addFragment = new AddFragment();
         ft.replace(R.id.content_frame, addFragment);
         ft.addToBackStack(null);
         ft.commit();
 
     }
 
+    private void loadDefault() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment dashboardFragment = new DashboardFragment();
+        ft.replace(R.id.content_frame, dashboardFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+
+    }
 
 
 }
