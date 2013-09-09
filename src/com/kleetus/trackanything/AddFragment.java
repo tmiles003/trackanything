@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,8 +22,10 @@ public class AddFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
 
+        menu.clear();
+        menuInflater.inflate(R.menu.add_menu, menu);
         super.onCreateOptionsMenu(menu, menuInflater);
-    }
 
+    }
 
 }

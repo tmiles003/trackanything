@@ -99,7 +99,6 @@ public class Main extends ActionBarActivity {
             return true;
         }
 
-
         switch (item.getItemId()) {
             case R.id.add_menu:
                 addTracker();
@@ -123,42 +122,13 @@ public class Main extends ActionBarActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void saveTracker() {    }
+    private void saveTracker() {
+        
+
+        loadDefault();
+    }
 
     private void addTracker() {
-
-        ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-                MenuInflater inflater = actionMode.getMenuInflater();
-                inflater.inflate(R.menu.add_menu, menu);
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-                switch(menuItem.getItemId()) {
-                    case R.id.save_menu:
-                        saveTracker();
-                        actionMode.finish();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                mode = null;
-            }
-        };
-
-        actionMode = startSupportActionMode(actionModeCallback);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         AddFragment addFragment = new AddFragment();
