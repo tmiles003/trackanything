@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="types">
+        <item>number</item>
+        <item>text</item>
+        <item>textbox</item>
+        <item>slider</item>
+        <item>choice</item>
+        <item>yes/no</item>
+        <item>function</item>
+    </array>
+
+
+    <array name="colors">
+        <item>red</item>
+        <item>green</item>
+        <item>blue</item>
+        <item>cyan</item>
+        <item>yellow</item>
+        <item>magenta</item>
+        <item>orange</item>
+        <item>purple</item>
+        <item>brown</item>
+    </array>
+
+    <array name="graph">
+        <item>dots</item>
+        <item>bar</item>
+        <item>line</item>
+        <item>line+dots</item>
+    </array>
+
+</resources>

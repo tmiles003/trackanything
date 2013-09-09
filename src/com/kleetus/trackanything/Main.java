@@ -123,7 +123,7 @@ public class Main extends ActionBarActivity {
     }
 
     private void saveTracker() {
-        
+
 
         loadDefault();
     }
