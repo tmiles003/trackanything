@@ -1,13 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTrackerName"
+        android:hint="tracker name"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editLabel"
+        android:hint="label name"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/editLabel">
+
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="test test test"
-            android:id="@+id/add_tracker_label" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Type"
+                android:id="@+id/labelType"
+                android:layout_column="0"
+                android:gravity="center"
+                android:layout_marginRight="10dp" />
+
+            <Spinner
+                android:id="@+id/spinnerType"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight=".5" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Color"
+                android:id="@+id/labelColor"
+                android:layout_column="0"
+                android:gravity="center"
+                android:layout_marginRight="10dp" />
+
+            <Spinner
+                android:id="@+id/spinnerColor"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight=".5" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Graph"
+                android:id="@+id/labelGraph"
+                android:layout_column="0"
+                android:gravity="center"
+                android:layout_marginRight="10dp" />
+
+            <Spinner
+                android:id="@+id/spinnerGraph"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight=".5" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
 </LinearLayout>
