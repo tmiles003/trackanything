@@ -14,100 +14,39 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_below="@+id/editLabel"
-        android:background="#222">
+        android:orientation="horizontal"
+        android:layout_margin="30dp">
 
-        <TableRow
-            android:layout_margin="20dp"
+        <Button
+            android:id="@+id/button_add_kvp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/ic_menu_add" />
+
+        <EditText
+            android:id="@+id/edit_kvp_label"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="#222"
+            android:hint="@string/element_name"
+            android:paddingLeft="20dp"
+            android:textColorHint="#555"
+            android:layout_marginLeft="30dp"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editLabel"
-                android:hint="label name"
-                android:layout_alignParentTop="true" />
+    </LinearLayout>
 
-        </TableRow>
+    <FrameLayout
+        android:id="@+id/frame_add_kvp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-
-        <TableRow
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Type"
-                android:id="@+id/labelType"
-                android:layout_column="0"
-                android:gravity="fill_vertical" />
-
-            <Spinner
-                android:id="@+id/spinnerType"
-                android:entries="@array/types"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight=".6" />
-        </TableRow>
-
-
-        <TableRow
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Color"
-                android:id="@+id/labelColor"
-                android:layout_column="0"
-                android:gravity="fill_vertical" />
-
-            <Spinner
-                android:id="@+id/spinnerColor"
-                android:entries="@array/colors"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight=".6" />
-        </TableRow>
-
-        <TableRow
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Graph"
-                android:id="@+id/labelGraph"
-                android:layout_column="0"
-                android:gravity="fill_vertical" />
-
-            <Spinner
-                android:id="@+id/spinnerGraph"
-                android:layout_height="match_parent"
-                android:entries="@array/graph"
-                android:layout_width="0dp"
-                android:layout_weight=".6" />
-        </TableRow>
-
-
-    </TableLayout>
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@android:id/list" />
 
 </LinearLayout>

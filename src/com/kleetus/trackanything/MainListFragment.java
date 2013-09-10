@@ -72,7 +72,7 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
 
     private int deleteTracker(long id) {
         int count = getActivity().getContentResolver().delete(
-                MainContentProvider.DELETE_TRACKER_URI,
+                MainContentProvider.CONTENT_URI,
                 "_id=" + Long.toString(id),
                 null
         );
