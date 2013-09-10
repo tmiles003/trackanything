@@ -4,4 +4,6 @@
     <string name="configurable_dashboard">Configurable Dashboard here</string>
     <string name="drawer_open">Open Drawer</string>
     <string name="drawer_close">Close Drawer</string>
+    <string name="add_kvp_button">Add Tracker Element</string>
+    <string name="element_name">Element name</string>
 </resources>

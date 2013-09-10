@@ -15,12 +15,38 @@
         android:layout_marginTop="20dp" />
 
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="30dp">
+
+        <Button
+            android:id="@+id/button_add_kvp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/ic_menu_add" />
+
+        <EditText
+            android:id="@+id/edit_kvp_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#222"
+            android:hint="@string/element_name"
+            android:paddingLeft="20dp"
+            android:textColorHint="#555"
+            android:layout_marginLeft="30dp"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_add_kvp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:id="@id/android:list" />
-
-
+        android:id="@android:id/list" />
 
 </LinearLayout>

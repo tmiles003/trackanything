@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +18,6 @@ public class Main extends ActionBarActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     CharSequence drawerTitle;
     CharSequence title;
-    ActionMode actionMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +68,7 @@ public class Main extends ActionBarActivity {
 
     private void loadTracker() {
 
-        Fragment trackerFragment = new MainListFragment();
+        Fragment trackerFragment = new TrackerListFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.list_frame, trackerFragment).commit();
 
@@ -130,11 +128,18 @@ public class Main extends ActionBarActivity {
 
     private void addTracker() {
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        AddFragment addFragment = new AddFragment();
-        ft.replace(R.id.content_frame, addFragment);
-        ft.addToBackStack(null);
-        ft.commit();
+        //add a row to tracker list and make the keyboard the first responder
+        TrackerListFragment trackerFragment = (TrackerListFragment) getSupportFragmentManager().findFragmentById(R.id.list_frame);
+        if(trackerFragment.isAdded()) {
+            trackerFragment.addTracker();
+        }
+
+
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        AddFragment addFragment = new AddFragment();
+//        ft.replace(R.id.content_frame, addFragment);
+//        ft.addToBackStack(null);
+//        ft.commit();
 
     }
 

@@ -2,8 +2,10 @@ package com.kleetus.trackanything;
 
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
@@ -17,27 +19,30 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MainListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class TrackerListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     String[] projection = {Constants.COL_ID, Constants.COL_TRACKER_NAME};
     String[] uiBindFrom = {Constants.COL_TRACKER_NAME};
     int[] uiBindTo = {android.R.id.text1};
+    ListView trackerList;
+    CursorAdapter listAdapter;
+    Uri insertedUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         getLoaderManager().initLoader(Constants.MAIN_LOADER, null, this);
 
-        return inflater.inflate(R.layout.main_list, container, false);
+        return inflater.inflate(R.layout.tracker_list, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ListView lv = getListView();
+        trackerList = getListView();
 
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        trackerList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -62,7 +67,7 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
                         int count = deleteTracker(id);
 
                         if (count > 0) {
-                            getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, MainListFragment.this);
+                            getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
                         }
 
                     }
@@ -72,7 +77,7 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
 
     private int deleteTracker(long id) {
         int count = getActivity().getContentResolver().delete(
-                MainContentProvider.DELETE_TRACKER_URI,
+                MainContentProvider.CONTENT_URI,
                 "_id=" + Long.toString(id),
                 null
         );
@@ -95,12 +100,12 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        CursorAdapter adapter = new SimpleCursorAdapter(getActivity()
+        listAdapter = new SimpleCursorAdapter(getActivity()
                 .getApplicationContext(), android.R.layout.simple_list_item_1, cursor,
                 uiBindFrom, uiBindTo, 0);
 
 
-        setListAdapter(adapter);
+        setListAdapter(listAdapter);
 
     }
 
@@ -118,5 +123,19 @@ public class MainListFragment extends ListFragment implements LoaderManager.Load
     }
 
 
+    public void addTracker() {
+        //add a new row to the list view and make the keyboard the first responder
+
+        ContentValues insertedValue = new ContentValues();
+        insertedValue.put("name", "");
+
+        insertedUri = getActivity().getContentResolver().insert(
+                MainContentProvider.CONTENT_URI,
+                insertedValue
+        );
+
+        getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
+
+    }
 }
 
