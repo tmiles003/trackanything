@@ -128,18 +128,10 @@ public class Main extends ActionBarActivity {
 
     private void addTracker() {
 
-        //add a row to tracker list and make the keyboard the first responder
         TrackerListFragment trackerFragment = (TrackerListFragment) getSupportFragmentManager().findFragmentById(R.id.list_frame);
         if(trackerFragment.isAdded()) {
             trackerFragment.addTracker();
         }
-
-
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        AddFragment addFragment = new AddFragment();
-//        ft.replace(R.id.content_frame, addFragment);
-//        ft.addToBackStack(null);
-//        ft.commit();
 
     }
 

@@ -13,11 +13,13 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class TrackerListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -25,7 +27,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     String[] uiBindFrom = {Constants.COL_TRACKER_NAME};
     int[] uiBindTo = {android.R.id.text1};
     ListView trackerList;
-    CursorAdapter listAdapter;
+    TrackerAdapter listAdapter;
     Uri insertedUri;
 
     @Override
@@ -100,8 +102,8 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        listAdapter = new SimpleCursorAdapter(getActivity()
-                .getApplicationContext(), android.R.layout.simple_list_item_1, cursor,
+        listAdapter = new TrackerAdapter(getActivity()
+                .getApplicationContext(), R.layout.tracker_row, cursor,
                 uiBindFrom, uiBindTo, 0);
 
 
