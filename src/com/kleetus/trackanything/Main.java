@@ -10,9 +10,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
-public class Main extends ActionBarActivity {
+public class Main extends ActionBarActivity implements View.OnTouchListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -22,6 +26,9 @@ public class Main extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         setContentView(R.layout.main);
 
@@ -56,6 +63,21 @@ public class Main extends ActionBarActivity {
 
         loadDashboard();
 
+        drawerLayout.setOnTouchListener(this);
+
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (v == drawerLayout) {
+            EditText editTrackerName = (EditText) findViewById(R.id.edit_tracker_name);
+            if(null != editTrackerName) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editTrackerName.getWindowToken(), 0);
+                return true;
+            }
+        }
+        return false;
     }
 
     private void loadDashboard() {
@@ -129,7 +151,7 @@ public class Main extends ActionBarActivity {
     private void addTracker() {
 
         TrackerListFragment trackerFragment = (TrackerListFragment) getSupportFragmentManager().findFragmentById(R.id.list_frame);
-        if(trackerFragment.isAdded()) {
+        if (trackerFragment.isAdded()) {
             trackerFragment.addTracker();
         }
 

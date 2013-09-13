@@ -126,7 +126,6 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
 
     public void addTracker() {
-        //add a new row to the list view and make the keyboard the first responder
 
         ContentValues insertedValue = new ContentValues();
         insertedValue.put("name", "");
