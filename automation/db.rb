@@ -44,7 +44,7 @@ end
 
 
 
-Db.new(ARGV).delete_extra_files.load_tracker.show_rows.write_back
+Db.new(ARGV).delete_extra_files.load_tracker.show_rows
 
 
 

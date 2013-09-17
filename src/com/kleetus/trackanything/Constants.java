@@ -25,4 +25,6 @@ public class Constants {
     public static final String ID = "id";
 
     public static final String DELETE = "delete";
+
+    public static final String TRACKER_NAME_STORAGE_PREFIX = "tracker";
 }

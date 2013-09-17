@@ -63,6 +63,10 @@ public class MainContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
+        if (values.get("name").equals("")) {
+            values.put("name", Constants.TRACKER_NAME_STORAGE_PREFIX + Integer.toString(findLastTrackerId()));
+        }
+
         values.put("date_created", Generic.getTime());
         long id = db.getWritableDatabase().insert(Constants.TABLE_TRACKER, null, values);
         db.close();
@@ -70,10 +74,38 @@ public class MainContentProvider extends ContentProvider {
 
     }
 
+    private int findLastTrackerId() {
+
+        int ret = 0;
+
+        String[] projection = {Constants.COL_TRACKER_NAME};
+        String selection =  Constants.COL_TRACKER_NAME + " like '" + Constants.TRACKER_NAME_STORAGE_PREFIX + "%'";
+
+        Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, null, null, null, Constants.COL_TRACKER_NAME);
+
+        if(null == cursor || cursor.getCount() == 0) {
+            return ret;
+        }
+
+        cursor.moveToLast();
+        String lastName = cursor.getString(0);
+        String[] lastNumber = lastName.split(Constants.TRACKER_NAME_STORAGE_PREFIX);
+
+
+        if(lastNumber.length > 1) {
+            try {
+                ret = Integer.parseInt(lastNumber[lastNumber.length-1]);
+                ret++;
+            }
+            catch(NumberFormatException e) {}
+        }
+        return ret;
+    }
+
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
 
-        int count =  db.getWritableDatabase().delete(Constants.TABLE_TRACKER, selection, selectionArgs);
+        int count = db.getWritableDatabase().delete(Constants.TABLE_TRACKER, selection, selectionArgs);
         db.close();
         return count;
 
