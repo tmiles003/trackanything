@@ -128,7 +128,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     public void addTracker() {
 
         ContentValues insertedValue = new ContentValues();
-        insertedValue.put("name", "");
+        insertedValue.put(Constants.COL_TRACKER_NAME, Constants.BLANK_PLACEHOLDER);
 
         insertedUri = getActivity().getContentResolver().insert(
                 MainContentProvider.CONTENT_URI,
@@ -136,6 +136,9 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
         );
 
         getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
+
+        Main act = (Main)getActivity();
+        act.openNavigationDrawer();
 
     }
 }

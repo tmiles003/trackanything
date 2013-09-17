@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -156,6 +157,15 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
         }
 
     }
+
+    public void openNavigationDrawer() {
+        drawerLayout.openDrawer(Gravity.LEFT);
+    }
+
+    public void closeNavigationDrawer() {
+
+    }
+
 
     private void loadDefault() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

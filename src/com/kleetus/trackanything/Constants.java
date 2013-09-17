@@ -27,4 +27,5 @@ public class Constants {
     public static final String DELETE = "delete";
 
     public static final String TRACKER_NAME_STORAGE_PREFIX = "tracker";
+    public static final String BLANK_PLACEHOLDER = "";
 }
