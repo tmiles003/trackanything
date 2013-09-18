@@ -64,6 +64,7 @@ public class TrackerAdapter extends SimpleCursorAdapter {
         if (null != trackerName) {
 
             trackerName.setText(name);
+            v.setBackgroundResource(R.color.royal_blue);
 
         }
 

@@ -9,6 +9,11 @@
         android:title="Add"
         trackanything:showAsAction="ifRoom|withText" />
 
-
+    <item
+        android:id="@+id/delete_all_trackers"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="Delete All Trackers"
+        android:visible="false"
+        trackanything:showAsAction="never" />
 
 </menu>

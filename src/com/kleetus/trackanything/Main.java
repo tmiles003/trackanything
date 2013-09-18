@@ -17,12 +17,13 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class Main extends ActionBarActivity implements View.OnTouchListener {
+public class Main extends ActionBarActivity implements View.OnTouchListener, NavDrawerInterface {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     CharSequence drawerTitle;
     CharSequence title;
+    TrackerListFragment trackerFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         if (v == drawerLayout) {
             EditText editTrackerName = (EditText) findViewById(R.id.edit_tracker_name);
-            if(null != editTrackerName) {
+            if (null != editTrackerName) {
                 InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(editTrackerName.getWindowToken(), 0);
                 return true;
@@ -91,7 +92,7 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
 
     private void loadTracker() {
 
-        Fragment trackerFragment = new TrackerListFragment();
+        trackerFragment = new TrackerListFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.list_frame, trackerFragment).commit();
 
@@ -127,12 +128,16 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
             case R.id.save_menu:
                 saveTracker();
                 return true;
+            case R.id.delete_all_trackers:
+                if (null != trackerFragment) {
+                    trackerFragment.deleteAllTrackers();
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,11 +145,18 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
+        MenuItem deleteAll = menu.findItem(R.id.delete_all_trackers);
+
+        if (null != deleteAll && MainApplication.DEBUG) {
+
+            deleteAll.setVisible(true);
+
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
     private void saveTracker() {
-
 
         loadDefault();
     }
@@ -158,16 +170,8 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
 
     }
 
-    public void openNavigationDrawer() {
-        drawerLayout.openDrawer(Gravity.LEFT);
-    }
-
-    public void closeNavigationDrawer() {
-
-    }
-
-
     private void loadDefault() {
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment dashboardFragment = new DashboardFragment();
         ft.replace(R.id.content_frame, dashboardFragment);
@@ -177,4 +181,17 @@ public class Main extends ActionBarActivity implements View.OnTouchListener {
     }
 
 
+    @Override
+    public void openDrawer() {
+
+        drawerLayout.openDrawer(Gravity.LEFT);
+
+    }
+
+    @Override
+    public void closeDrawer() {
+
+        drawerLayout.closeDrawer(Gravity.LEFT);
+
+    }
 }

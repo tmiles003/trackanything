@@ -87,6 +87,22 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     }
 
 
+    public void deleteAllTrackers() {
+
+        getActivity().getContentResolver().delete(
+                MainContentProvider.CONTENT_URI,
+                null,
+                null
+        );
+
+        getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
+
+        NavDrawerInterface act = (NavDrawerInterface)getActivity();
+        act.openDrawer();
+
+    }
+
+
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
@@ -137,8 +153,8 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
         getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
 
-        Main act = (Main)getActivity();
-        act.openNavigationDrawer();
+        NavDrawerInterface act = (NavDrawerInterface)getActivity();
+        act.openDrawer();
 
     }
 }
