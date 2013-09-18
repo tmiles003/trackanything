@@ -78,19 +78,18 @@ public class MainContentProvider extends ContentProvider {
 
         int ret = 0;
 
-        String[] projection = {Constants.COL_TRACKER_NAME};
+        String[] projection = {Constants.COL_ID, Constants.COL_TRACKER_NAME};
         String selection =  Constants.COL_TRACKER_NAME + " like '" + Constants.TRACKER_NAME_STORAGE_PREFIX + "%'";
 
-        Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, null, null, null, Constants.COL_TRACKER_NAME);
+        Cursor cursor = queryBuilder.query(db.getReadableDatabase(), projection, selection, null, null, null, Constants.COL_ID);
 
         if(null == cursor || cursor.getCount() == 0) {
             return ret;
         }
 
         cursor.moveToLast();
-        String lastName = cursor.getString(0);
+        String lastName = cursor.getString(1);
         String[] lastNumber = lastName.split(Constants.TRACKER_NAME_STORAGE_PREFIX);
-
 
         if(lastNumber.length > 1) {
             try {
@@ -113,7 +112,6 @@ public class MainContentProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-
 
         return 0;
 
