@@ -97,7 +97,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
         getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
 
-        NavDrawerInterface act = (NavDrawerInterface)getActivity();
+        NavDrawerInterface act = (NavDrawerInterface) getActivity();
         act.openDrawer();
 
     }
@@ -153,7 +153,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
         getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
 
-        NavDrawerInterface act = (NavDrawerInterface)getActivity();
+        NavDrawerInterface act = (NavDrawerInterface) getActivity();
         act.openDrawer();
 
     }

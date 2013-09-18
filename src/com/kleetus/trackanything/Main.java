@@ -17,7 +17,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class Main extends ActionBarActivity implements View.OnTouchListener, NavDrawerInterface {
+public class Main extends ActionBarActivity implements  NavDrawerInterface {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -65,21 +65,6 @@ public class Main extends ActionBarActivity implements View.OnTouchListener, Nav
 
         loadDashboard();
 
-        drawerLayout.setOnTouchListener(this);
-
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (v == drawerLayout) {
-            EditText editTrackerName = (EditText) findViewById(R.id.edit_tracker_name);
-            if (null != editTrackerName) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(editTrackerName.getWindowToken(), 0);
-                return true;
-            }
-        }
-        return false;
     }
 
     private void loadDashboard() {
@@ -165,7 +150,9 @@ public class Main extends ActionBarActivity implements View.OnTouchListener, Nav
 
         TrackerListFragment trackerFragment = (TrackerListFragment) getSupportFragmentManager().findFragmentById(R.id.list_frame);
         if (trackerFragment.isAdded()) {
+
             trackerFragment.addTracker();
+
         }
 
     }
