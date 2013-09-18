@@ -1,5 +1,6 @@
 package com.kleetus.trackanything;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ public class TrackerAdapter extends SimpleCursorAdapter {
     private int layout;
     Context context;
     TextView trackerName;
+    boolean isAddOperation = false;
 
     public TrackerAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flag) {
         super(context, layout, c, from, to, flag);
@@ -34,9 +36,6 @@ public class TrackerAdapter extends SimpleCursorAdapter {
         String name = c.getString(1);
 
         if (null != trackerName) {
-            if (c.getCount() - 1 == c.getPosition()) {
-                v.setSelected(true);
-            }
             trackerName.setText(name);
         }
         return v;
@@ -57,6 +56,11 @@ public class TrackerAdapter extends SimpleCursorAdapter {
         }
 
     }
+
+    public void setAddOperation(boolean addOperation) {
+        isAddOperation = addOperation;
+    }
+
 }
 
 

@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class TrackerListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     String[] projection = {Constants.COL_ID, Constants.COL_TRACKER_NAME};
@@ -29,6 +31,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     ListView trackerList;
     TrackerAdapter listAdapter;
     Uri insertedUri;
+    View itemClicked;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,9 +137,8 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     @Override
     public void onListItemClick(ListView i, View v, int position, long id) {
 
-        //load a new fragment??
+        itemClicked = v;
 
-        // getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, this);
 
     }
 
@@ -153,8 +155,8 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
         getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
 
-        NavDrawerInterface act = (NavDrawerInterface) getActivity();
-        act.openDrawer();
+//        NavDrawerInterface act = (NavDrawerInterface) getActivity();
+//        act.openDrawer();
 
     }
 }

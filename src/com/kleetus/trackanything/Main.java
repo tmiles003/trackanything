@@ -11,19 +11,17 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
-public class Main extends ActionBarActivity implements  NavDrawerInterface {
+public class Main extends ActionBarActivity implements NavDrawerInterface {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     CharSequence drawerTitle;
     CharSequence title;
     TrackerListFragment trackerFragment;
+    boolean isSaveContext = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,14 +41,14 @@ public class Main extends ActionBarActivity implements  NavDrawerInterface {
             public void onDrawerClosed(View view) {
 
                 getSupportActionBar().setTitle(title);
-                supportInvalidateOptionsMenu();
+                //supportInvalidateOptionsMenu();
 
             }
 
             public void onDrawerOpened(View view) {
 
                 getSupportActionBar().setTitle(drawerTitle);
-                supportInvalidateOptionsMenu();
+                //supportInvalidateOptionsMenu();
 
             }
 
@@ -112,6 +110,7 @@ public class Main extends ActionBarActivity implements  NavDrawerInterface {
                 return true;
             case R.id.save_menu:
                 saveTracker();
+                supportInvalidateOptionsMenu();
                 return true;
             case R.id.delete_all_trackers:
                 if (null != trackerFragment) {
@@ -129,6 +128,12 @@ public class Main extends ActionBarActivity implements  NavDrawerInterface {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+        if(isSaveContext) {
+            menu.findItem(R.id.save_menu).setVisible(true);
+            menu.findItem(R.id.add_menu).setVisible(false);
+            isSaveContext = false;
+        }
 
         MenuItem deleteAll = menu.findItem(R.id.delete_all_trackers);
 
@@ -148,12 +153,29 @@ public class Main extends ActionBarActivity implements  NavDrawerInterface {
 
     private void addTracker() {
 
-        TrackerListFragment trackerFragment = (TrackerListFragment) getSupportFragmentManager().findFragmentById(R.id.list_frame);
         if (trackerFragment.isAdded()) {
 
             trackerFragment.addTracker();
 
+            AddTrackerFragment addTrackerFragment = new AddTrackerFragment();
+
+            if (!addTrackerFragment.isAdded()) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, addTrackerFragment);
+                ft.addToBackStack(null);
+                ft.commit();
+                replaceWithSaveMenu();
+            }
+
         }
+
+    }
+
+    private void replaceWithSaveMenu() {
+
+        isSaveContext = true;
+
+        supportInvalidateOptionsMenu();
 
     }
 

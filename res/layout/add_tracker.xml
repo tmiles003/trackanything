@@ -2,51 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="48dp">
 
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTrackerName"
-        android:hint="tracker name"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp" />
-
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="30dp">
+        android:id="@+id/edit_tracker_nane"
+        android:hint="tracker name"
+        android:layout_alignParentTop="true" />
 
-        <Button
-            android:id="@+id/button_add_kvp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@android:drawable/ic_menu_add" />
 
-        <EditText
-            android:id="@+id/edit_kvp_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#222"
-            android:hint="@string/element_name"
-            android:paddingLeft="20dp"
-            android:textColorHint="#555"
-            android:layout_marginLeft="30dp"/>
+    <EditText
+        android:id="@+id/edit_kvp_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/element_name"
+        android:layout_marginTop="20dp" />
 
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/frame_add_kvp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@android:id/list" />
+        android:id="@android:id/list"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
