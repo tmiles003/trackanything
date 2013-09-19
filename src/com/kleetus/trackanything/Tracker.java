@@ -3,6 +3,14 @@ package com.kleetus.trackanything;
 
 public class Tracker {
     String name;
+    long id;
+    KvpDefinition kvp;
+
+    public Tracker(KvpDefinition kvp) {
+
+        this.kvp = kvp;
+
+    }
 
     public String getName() {
         return name;
@@ -11,8 +19,6 @@ public class Tracker {
     public void setName(String name) {
         this.name = name;
     }
-
-    long id;
 
     public long getId() {
         return id;

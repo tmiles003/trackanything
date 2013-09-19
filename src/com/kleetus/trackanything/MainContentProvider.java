@@ -67,7 +67,7 @@ public class MainContentProvider extends ContentProvider {
             values.put("name", Constants.TRACKER_NAME_STORAGE_PREFIX + Integer.toString(findLastTrackerId()));
         }
 
-        values.put("date_created", Generic.getTime());
+        values.put("date_created", MainApplication.getTime());
         long id = db.getWritableDatabase().insert(Constants.TABLE_TRACKER, null, values);
         db.close();
         return Uri.parse(CONTENT_URI + "/" + id);
