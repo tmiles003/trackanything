@@ -18,7 +18,7 @@ public class TrackerAdapter extends SimpleCursorAdapter {
     boolean isAddOperation = false;
 
     public TrackerAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flag) {
-        super(context, layout, c, from, to, flag);
+        super(context, layout, c, from, to);
         this.layout = layout;
         this.context = context;
     }

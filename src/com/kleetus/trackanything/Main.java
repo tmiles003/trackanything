@@ -21,6 +21,7 @@ public class Main extends ActionBarActivity implements NavDrawerInterface {
     CharSequence drawerTitle;
     CharSequence title;
     TrackerListFragment trackerFragment;
+    AddTrackerFragment addTrackerFragment;
     boolean isSaveContext = false;
 
     @Override
@@ -41,14 +42,12 @@ public class Main extends ActionBarActivity implements NavDrawerInterface {
             public void onDrawerClosed(View view) {
 
                 getSupportActionBar().setTitle(title);
-                //supportInvalidateOptionsMenu();
 
             }
 
             public void onDrawerOpened(View view) {
 
                 getSupportActionBar().setTitle(drawerTitle);
-                //supportInvalidateOptionsMenu();
 
             }
 
@@ -148,7 +147,14 @@ public class Main extends ActionBarActivity implements NavDrawerInterface {
 
     private void saveTracker() {
 
+        if(null != addTrackerFragment) {
+
+            addTrackerFragment.saveTracker();
+
+        }
+
         loadDefault();
+
     }
 
     private void addTracker() {
@@ -157,7 +163,7 @@ public class Main extends ActionBarActivity implements NavDrawerInterface {
 
             trackerFragment.addTracker();
 
-            AddTrackerFragment addTrackerFragment = new AddTrackerFragment();
+            addTrackerFragment = new AddTrackerFragment();
 
             if (!addTrackerFragment.isAdded()) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
