@@ -1,6 +1,8 @@
 package com.kleetus.trackanything;
 
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class AddTrackerFragment extends ListFragment {
 
@@ -27,30 +31,49 @@ public class AddTrackerFragment extends ListFragment {
                 ((Spinner) getActivity().findViewById(R.id.graph_spinner)).getSelectedItem().toString()
         };
 
-        String[] errors = validateInput(inputs);
+        int errors = validateInput(inputs);
 
-//        if (errors.length > 0) {
-//
-//            ContentValues insertedValue = new ContentValues();
-//            insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
-//            insertedValue.put(Constants.COL_, inputs[0]);
-//            insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
-//            insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
-//
-//
-//            Uri insertedUri = getActivity().getContentResolver().insert(
-//                    MainContentProvider.CONTENT_URI,
-//                    insertedValue
-//            );
-//
-//        }
-//
+        if (errors < 1) {
+
+            ContentValues insertedValue = new ContentValues();
+            insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
+
+            Uri insertedUri = getActivity().getContentResolver().insert(
+                    Constants.CONTENT_URI,
+                    insertedValue
+            );
+
+            String[] uriParts = insertedUri.toString().split("/");
+            int trackerId =  Integer.parseInt(uriParts[uriParts.length-1]);
+
+
+
+        }
+
+        else {
+
+            //deal with the errors
+
+        }
+
 
     }
 
-    private String[] validateInput(String[] inputs) {
+    private int validateInput(String[] inputs) {
 
-        return null;
+        int errors = 0;
+
+        for(String input : inputs) {
+
+            if(input.length() < 1) {
+
+                errors++;
+
+            }
+
+        }
+
+        return errors;
 
     }
 

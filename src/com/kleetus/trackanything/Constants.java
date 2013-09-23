@@ -1,6 +1,8 @@
 package com.kleetus.trackanything;
 
 
+import android.net.Uri;
+
 public class Constants {
     public static final String DBNAME = "Tracker";
     public static final int VERSION = 1;
@@ -28,4 +30,16 @@ public class Constants {
 
     public static final String TRACKER_NAME_STORAGE_PREFIX = "tracker";
     public static final String BLANK_PLACEHOLDER = "";
+
+    public static final String AUTHORITY = "com.kleetus.trackanything.MainContentProvider";
+    public static final String TRACKER_BASE_PATH = "trackers";
+    public static final String KVP_DEFINITION_BASE_PATH = "kvp_definition";
+    public static final String KVP_DATA_BASE_PATH = "kvp_data";
+
+    public static final int TRACKERS = 1;
+    public static final int KVP_DEFINITION = 2;
+    public static final int KVP_DATA = 3;
+
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+
 }

@@ -82,7 +82,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
     private int deleteTracker(long id) {
         int count = getActivity().getContentResolver().delete(
-                MainContentProvider.CONTENT_URI,
+                Constants.CONTENT_URI,
                 "_id=" + Long.toString(id),
                 null
         );
@@ -93,7 +93,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     public void deleteAllTrackers() {
 
         getActivity().getContentResolver().delete(
-                MainContentProvider.CONTENT_URI,
+                Constants.CONTENT_URI,
                 null,
                 null
         );
@@ -111,7 +111,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
         return new CursorLoader(
                 getActivity(),
-                MainContentProvider.CONTENT_URI,
+                Constants.CONTENT_URI,
                 projection,
                 null,
                 null,
@@ -149,7 +149,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
         insertedValue.put(Constants.COL_TRACKER_NAME, Constants.BLANK_PLACEHOLDER);
 
         insertedUri = getActivity().getContentResolver().insert(
-                MainContentProvider.CONTENT_URI,
+                Constants.CONTENT_URI,
                 insertedValue
         );
 
