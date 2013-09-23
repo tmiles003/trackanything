@@ -46,6 +46,18 @@ public class AddTrackerFragment extends ListFragment {
             String[] uriParts = insertedUri.toString().split("/");
             int trackerId =  Integer.parseInt(uriParts[uriParts.length-1]);
 
+            if(trackerId > 0) {
+
+                ContentValues kvpValues = new ContentValues();
+
+                kvpValues.put(Constants.COL_TRACKER_ID, trackerId);
+                kvpValues.put(Constants.COL_KVP_KEY, inputs[1]);
+                kvpValues.put(Constants.COL_KVP_VALUE_TYPE, inputs[3]);
+
+
+            }
+
+
 
 
         }

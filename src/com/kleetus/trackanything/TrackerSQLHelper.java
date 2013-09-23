@@ -59,6 +59,8 @@ public class TrackerSQLHelper extends SQLiteOpenHelper {
                 " text not null, " +
                 Constants.COL_KVP_VALUE_TYPE +
                 " text not null, " +
+                Constants.COL_KVP_GRAPH +
+                " text not null, " +
                 Constants.COL_DATE_CREATED +
                 " integer not null);");
     }

@@ -5,7 +5,7 @@ import android.net.Uri;
 
 public class Constants {
     public static final String DBNAME = "Tracker";
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
 
     public static final String TABLE_TRACKER = "trackers";
     public static final String TABLE_KVP_DEFS = "kvp_definitions";
@@ -18,6 +18,7 @@ public class Constants {
     public static final String COL_TRACKER_ID = "tracker_id";
     public static final String COL_KVP_KEY = "key";
     public static final String COL_KVP_VALUE_TYPE = "value_type";
+    public static final String COL_KVP_GRAPH = "kvp_graph";
     public static final String COL_KVP_COLOR = "color";
     public static final String COL_KVP_DEF_ID = "kvp_def_id";
     public static final String COL_KVP_DATA = "data";
@@ -41,5 +42,6 @@ public class Constants {
     public static final int KVP_DATA = 3;
 
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+
 
 }
