@@ -2,7 +2,6 @@ package com.kleetus.trackanything;
 
 
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,17 +10,11 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class TrackerListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -30,7 +23,6 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     int[] uiBindTo = {android.R.id.text1};
     ListView trackerList;
     TrackerAdapter listAdapter;
-    Uri insertedUri;
     View itemClicked;
 
     @Override
@@ -82,7 +74,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 
     private int deleteTracker(long id) {
         int count = getActivity().getContentResolver().delete(
-                Constants.CONTENT_URI,
+                Constants.TRACKER_CONTENT_URI,
                 "_id=" + Long.toString(id),
                 null
         );
@@ -93,7 +85,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     public void deleteAllTrackers() {
 
         getActivity().getContentResolver().delete(
-                Constants.CONTENT_URI,
+                Constants.TRACKER_CONTENT_URI,
                 null,
                 null
         );
@@ -109,9 +101,11 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
+        assert (Constants.TRACKER_CONTENT_URI.toString().equals("content://com.kleetus.trackanything.MainContentProvider/trackers"));
+
         return new CursorLoader(
                 getActivity(),
-                Constants.CONTENT_URI,
+                Constants.TRACKER_CONTENT_URI,
                 projection,
                 null,
                 null,
@@ -149,7 +143,7 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
 //        insertedValue.put(Constants.COL_TRACKER_NAME, Constants.BLANK_PLACEHOLDER);
 //
 //        insertedUri = getActivity().getContentResolver().insert(
-//                Constants.CONTENT_URI,
+//                Constants.TRACKER_CONTENT_URI,
 //                insertedValue
 //        );
 //

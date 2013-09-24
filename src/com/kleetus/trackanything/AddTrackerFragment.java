@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-
 public class AddTrackerFragment extends ListFragment {
 
 
@@ -31,38 +29,19 @@ public class AddTrackerFragment extends ListFragment {
                 ((Spinner) getActivity().findViewById(R.id.graph_spinner)).getSelectedItem().toString()
         };
 
-        int errors = validateInput(inputs);
 
-        if (errors < 1) {
+        if (validateInput(inputs) < 1) {
 
-            ContentValues insertedValue = new ContentValues();
-            insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
+            long trackerId = insertTracker(inputs);
 
-            Uri insertedUri = getActivity().getContentResolver().insert(
-                    Constants.CONTENT_URI,
-                    insertedValue
-            );
+            if (trackerId > 0) {
 
-            String[] uriParts = insertedUri.toString().split("/");
-            int trackerId =  Integer.parseInt(uriParts[uriParts.length-1]);
-
-            if(trackerId > 0) {
-
-                ContentValues kvpValues = new ContentValues();
-
-                kvpValues.put(Constants.COL_TRACKER_ID, trackerId);
-                kvpValues.put(Constants.COL_KVP_KEY, inputs[1]);
-                kvpValues.put(Constants.COL_KVP_VALUE_TYPE, inputs[3]);
-
+                insertKvpDef(inputs, trackerId);
 
             }
 
 
-
-
-        }
-
-        else {
+        } else {
 
             //deal with the errors
 
@@ -71,13 +50,49 @@ public class AddTrackerFragment extends ListFragment {
 
     }
 
+    private long insertKvpDef(String[] inputs, long trackerId) {
+
+        ContentValues kvpValues = new ContentValues();
+
+        kvpValues.put(Constants.COL_TRACKER_ID, trackerId);
+        kvpValues.put(Constants.COL_KVP_KEY, inputs[1]);
+        kvpValues.put(Constants.COL_KVP_VALUE_TYPE, inputs[2]);
+        kvpValues.put(Constants.COL_KVP_COLOR, inputs[3]);
+        kvpValues.put(Constants.COL_KVP_GRAPH, inputs[4]);
+
+        Uri insertedUri = getActivity().getContentResolver().insert(
+                Constants.KVPDEF_CONTENT_URI,
+                kvpValues
+        );
+
+        String[] uriParts = insertedUri.toString().split("/");
+        return Integer.parseInt(uriParts[uriParts.length - 1]);
+
+    }
+
+    private long insertTracker(String[] inputs) {
+
+        ContentValues insertedValue = new ContentValues();
+        insertedValue.put(Constants.COL_TRACKER_NAME, inputs[0]);
+
+        Uri insertedUri = getActivity().getContentResolver().insert(
+                Constants.TRACKER_CONTENT_URI,
+                insertedValue
+        );
+
+        String[] uriParts = insertedUri.toString().split("/");
+        return Integer.parseInt(uriParts[uriParts.length - 1]);
+
+    }
+
+
     private int validateInput(String[] inputs) {
 
         int errors = 0;
 
-        for(String input : inputs) {
+        for (String input : inputs) {
 
-            if(input.length() < 1) {
+            if (input.length() < 1) {
 
                 errors++;
 

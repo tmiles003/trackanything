@@ -41,7 +41,10 @@ public class Constants {
     public static final int KVP_DEFINITION = 2;
     public static final int KVP_DATA = 3;
 
-    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+    public static final Uri TRACKER_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TRACKER_BASE_PATH);
+
+    public static final Uri KVPDEF_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + KVP_DEFINITION_BASE_PATH);
+
 
 
 }

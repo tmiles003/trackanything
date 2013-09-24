@@ -37,6 +37,12 @@ public class MainContentProvider extends ContentProvider {
             case Constants.TRACKERS:
                 queryBuilder.setTables(Constants.TABLE_TRACKER);
                 break;
+            case Constants.KVP_DEFINITION:
+                queryBuilder.setTables(Constants.TABLE_KVP_DEFS);
+                break;
+            case Constants.KVP_DATA:
+                queryBuilder.setTables(Constants.TABLE_KVP_DATA);
+                break;
             default:
                 throw new IllegalArgumentException("Unknown URI");
         }
