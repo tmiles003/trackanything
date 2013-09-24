@@ -143,21 +143,21 @@ public class TrackerListFragment extends ListFragment implements LoaderManager.L
     }
 
 
-    public void addTracker() {
+    //public void addTracker() {
 
-        ContentValues insertedValue = new ContentValues();
-        insertedValue.put(Constants.COL_TRACKER_NAME, Constants.BLANK_PLACEHOLDER);
-
-        insertedUri = getActivity().getContentResolver().insert(
-                Constants.CONTENT_URI,
-                insertedValue
-        );
-
-        getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
+//        ContentValues insertedValue = new ContentValues();
+//        insertedValue.put(Constants.COL_TRACKER_NAME, Constants.BLANK_PLACEHOLDER);
+//
+//        insertedUri = getActivity().getContentResolver().insert(
+//                Constants.CONTENT_URI,
+//                insertedValue
+//        );
+//
+//        getLoaderManager().restartLoader(Constants.MAIN_LOADER, null, TrackerListFragment.this);
 
 //        NavDrawerInterface act = (NavDrawerInterface) getActivity();
 //        act.openDrawer();
 
-    }
+    //}
 }
 

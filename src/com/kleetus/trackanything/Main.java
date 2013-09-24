@@ -161,8 +161,6 @@ public class Main extends ActionBarActivity implements NavDrawerInterface {
 
         if (trackerFragment.isAdded()) {
 
-            trackerFragment.addTracker();
-
             addTrackerFragment = new AddTrackerFragment();
 
             if (!addTrackerFragment.isAdded()) {
